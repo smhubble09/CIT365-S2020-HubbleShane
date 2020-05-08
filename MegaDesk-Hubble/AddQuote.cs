@@ -18,27 +18,29 @@ namespace MegaDesk_Hubble
 
             //Populate Date
             QuoteDateLabel.Text = DateTime.Now.ToString("MM/dd/yyyy");
+            dq.setQuoteDate(QuoteDateLabel.Text);
         }
         //Main Menu
+        MainMenu form = new MainMenu();
         private void MainMenu_Click(object sender, EventArgs e) {
-            MainMenu form = new MainMenu();
             form.Show();
             this.Close();
         }
         private void MainMenu_KeyPress(object sender, KeyPressEventArgs e) {
             if (e.KeyChar == (char)Keys.M) {
-                MainMenu form = new MainMenu();
                 form.Show();
                 this.Close();
             }
         }
         //Submit
         private void SubmitButton_Click(object sender, EventArgs e) {
-
+            Close();
+            form.Show();
         }
         private void SubmitButton_KeyPress(object sender, KeyPressEventArgs e) {
             if (e.KeyChar == (char)Keys.S) {
-
+                Close();
+                form.Show();
             }
         }
         //Exit
@@ -52,11 +54,57 @@ namespace MegaDesk_Hubble
             }
         }
 
+        //Highlight all text in boxes
+        private void TabInEvent_Enter(object sender, EventArgs e) {
+            //Select the whole answer in the control.
+            NumericUpDown answerBox = sender as NumericUpDown;
+            TextBox answerBox2 = sender as TextBox;
+            if (answerBox != null) {
+                int lengthOfAnswer = answerBox.Value.ToString().Length;
+                answerBox.Select(0, lengthOfAnswer);
+            }
+            else if (answerBox2 != null) {
+                int lengthOfAnswer = answerBox2.Text.Length;
+                answerBox2.Select(0, lengthOfAnswer);
+            }
+        }
+
+        //---------------------VALIDATION-------------------------------------------------
+        Desk de = new Desk();
+        DeskQuote dq = new DeskQuote();
         //NameBox Validation
         private void NameBox_KeyPress(object sender, KeyPressEventArgs e) {
             e.Handled = !(char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back || e.KeyChar == (char)Keys.ShiftKey || e.KeyChar == (char)Keys.Space);
         }
+        private void NameBox_TextChanged(object sender, EventArgs e) {
+            dq.setCustName(NameBox.Text); 
+        }
+        private void NameBox_Validating(object sender, CancelEventArgs e) {
+            string errorMsg;
+            if (!ValidName(NameBox.Text, out errorMsg)) {
+                //Cancel the event and select the text to be corrected by the user.
+                e.Cancel = true;
+                NameBox.Select(0, NameBox.Text.Length);
 
+                //Set the ErrorProvider error with the text to display. 
+                this.errorProvider3.SetError(NameBox, errorMsg);
+            }
+        }
+        private void NameBox_Validated(object sender, EventArgs e) {
+            //If all conditions have been met, clear the ErrorProvider of errors.
+            errorProvider3.SetError(NameBox, "");
+        }
+        public bool ValidName(string name, out string errorMessage) {
+            if (NameBox.TextLength == 0) {//Confirm that the width box is not empty.
+                errorMessage = "Required";
+                return false;
+            }
+            else {
+                errorMessage = null;
+                return true;
+            }
+        }
+        
         //WidthBox Validation
         private void WidthBox_Validating(object sender, CancelEventArgs e) {
             string errorMsg;
@@ -69,12 +117,10 @@ namespace MegaDesk_Hubble
                 this.errorProvider1.SetError(WidthBox, errorMsg);
             }
         }
-
         private void WidthBox_Validated(object sender, EventArgs e) {
             //If all conditions have been met, clear the ErrorProvider of errors.
             errorProvider1.SetError(WidthBox, "");
         }
-
         public bool ValidWidth(string width, out string errorMessage) {
             try {
                 if (WidthBox.TextLength == 0) {//Confirm that the width box is not empty.
@@ -82,11 +128,12 @@ namespace MegaDesk_Hubble
                     return false;
                 }
 
-                else if (int.Parse(width) < 24 || int.Parse(width) > 96) {//Number is between 24 and 96
+                else if (int.Parse(width) < de.getWMin() || int.Parse(width) > de.getWMax()) {//Number is between 24 and 96
                     errorMessage = "Please enter a number between 24 and 96";
                     return false;
                 }
                 else {
+                    de.setWidth(int.Parse(WidthBox.Text));
                     errorMessage = null;
                     return true;
                 }
@@ -125,34 +172,39 @@ namespace MegaDesk_Hubble
                 return false;
             }
 
-            else if (int.Parse(depth) < 12 || int.Parse(depth) > 48) {//Number is between 12 and 48
+            else if (int.Parse(depth) < de.getDMin() || int.Parse(depth) > de.getDMax()) {//Number is between 12 and 48
                 errorMessage = "Please enter a number between 12 and 48";
                 return false;
             }
             else {
+                de.setDepth(int.Parse(DepthBox.Text));
                 errorMessage = null;
                 return true;
             }
         }
 
         //Find square inch
-        private void WidthBox_TextChanged(object sender, EventArgs e) {
-            returnSqIn();
+        private void WidthBox_TextChanged(object sender, EventArgs e) { 
+            ReturnSqIn();
         }
         private void DepthBox_TextChanged(object sender, EventArgs e) {
-            returnSqIn();
+            ReturnSqIn();
         }
-        private void returnSqIn() {
+        private void ReturnSqIn() {
             int width;
             int depth;
             if (int.TryParse(WidthBox.Text, out width) && int.TryParse(DepthBox.Text, out depth)) {
-                int sqInt = width * depth;
+            int sqInt = width * depth;
+                de.setWidth(width);
+                de.setDepth(depth);
                 SquareInLabel.Text = sqInt.ToString();
                 if (sqInt > 1000) {//Display inches over 1,000
-                    SizeOverageLabel.Text = (sqInt - 1000).ToString() + " in²";
-                    SizeCostLabel.Text = (sqInt - 1000).ToString() + ".00";
+                    SizeOverageLabel.Text = (sqInt - 1000).ToString("#,##0") + " in²";
+                    SizeCostLabel.Text = (sqInt - 1000).ToString("#,##0.00");
+                    dq.SetExtraSizeCost(sqInt);
                 }
                 else {
+                    dq.SetExtraSizeCost(0);
                     SizeOverageLabel.Text = "0 in²";
                     SizeCostLabel.Text = "0.00";
                 }
@@ -160,112 +212,58 @@ namespace MegaDesk_Hubble
             TotalCost();
         }
 
-        //Calculate Drawer Cost
+        //Show Drawer Cost
         private void DrawerBox_ValueChanged(object sender, EventArgs e) {
-            DrawerCost();
+            SetDrawers();
+            SetDrawerPrice();
+            TotalCost();
         }
-        private void DrawerCost() {
+        private void SetDrawers() {
             int drawers = Convert.ToInt32(DrawerBox.Value);
-            int drawerPrice = drawers * 50;
-            DrawerCostLabel.Text = drawerPrice.ToString() + ".00";
-            TotalCost();
+            de.setNumberDrawers(drawers);
+        }
+        private void SetDrawerPrice() {
+            DrawerCostLabel.Text = dq.DrawerCost(de.getNumberDrawers()).ToString() + ".00";
         }
 
-        //Calculate Material Cost
+        //Show Material Cost
         private void MaterialBox_SelectedIndexChanged(object sender, EventArgs e) {
-            MaterialCost();
-        }
-        private void MaterialCost() {
-            //var material = Enum.DesktopMaterial();
-            switch (MaterialBox.SelectedIndex) {
-                case 0://Oak
-                    MaterialCostLabel.Text = "200.00";
-                    break;
-                case 1://Laminate
-                    MaterialCostLabel.Text = "100.00";
-                    break;
-                case 2://Pine
-                    MaterialCostLabel.Text = "50.00";
-                    break;
-                case 3://Rosewood
-                    MaterialCostLabel.Text = "300.00";
-                    break;
-                case 4://Veneer
-                    MaterialCostLabel.Text = "125.00";
-                    break;
-            }
+            SetMaterial();
+            SetMaterialPrice();
             TotalCost();
         }
+        private void SetMaterial() {
+            de.setMaterial(MaterialBox.Text);
+        }
+        private void SetMaterialPrice() {
+            MaterialCostLabel.Text = dq.MaterialCost(de.getMaterial()).ToString() + ".00";
+        }
 
-        //Calculate Rush Order
+        //Show Rush Order
         private void RushBox_SelectedIndexChanged(object sender, EventArgs e) {
             ShippingCost();
+            TotalCost();
         }
         private void ShippingCost() {
+            dq.setRushDays(RushBox.SelectedIndex);
             int width;
             int depth;
             int sqInt;
             if (int.TryParse(WidthBox.Text, out width) && int.TryParse(DepthBox.Text, out depth)) {
                 sqInt = width * depth;
-                switch (RushBox.SelectedIndex) {
-                    case 0://3 Day
-                        if (sqInt < 1000)
-                            ShipCostLabel.Text = "60.00";
-                        else if (sqInt > 2000)
-                            ShipCostLabel.Text = "80.00";
-                        else
-                            ShipCostLabel.Text = "70.00";
-                        break;
-                    case 1://5 Day
-                        if (sqInt < 1000)
-                            ShipCostLabel.Text = "40.00";
-                        else if (sqInt > 2000)
-                            ShipCostLabel.Text = "60.00";
-                        else
-                            ShipCostLabel.Text = "50.00";
-                        break;
-                    case 2://7 Day
-                        if (sqInt < 1000)
-                            ShipCostLabel.Text = "30.00";
-                        else if (sqInt > 2000)
-                            ShipCostLabel.Text = "40.00";
-                        else
-                            ShipCostLabel.Text = "35.00";
-                        break;
-                    case 3://Normal
-                        ShipCostLabel.Text = "0.00";
-                        break;
-                }
+                //dq.ShippingCost(sqInt);
+                ShipCostLabel.Text = dq.ShippingCost(sqInt).ToString() + ".00";
             }
             else
                 ShipCostLabel.Text = "0.00";
-            TotalCost();
         }
 
         //Show Total Cost
         private void TotalCost() {
-            double shipping = double.Parse(ShipCostLabel.Text);
-            double material = double.Parse(MaterialCostLabel.Text);
-            double drawer = double.Parse(DrawerCostLabel.Text);
-            double size = double.Parse(SizeCostLabel.Text);
-            double total = shipping + material + drawer + size + 200;
-            TotalCostLabel.Text = total.ToString() + ".00";
+            dq.TotalCost();
+            TotalCostLabel.Text = dq.getPrice().ToString("#,##0.00");
         }
 
-        //Highlight all text in boxes
-        private void tabInEvent_Enter(object sender, EventArgs e) {
-            //Select the whole answer in the control.
-            NumericUpDown answerBox = sender as NumericUpDown;
-            TextBox answerBox2 = sender as TextBox;
-            if (answerBox != null) {
-                int lengthOfAnswer = answerBox.Value.ToString().Length;
-                answerBox.Select(0, lengthOfAnswer);
-            }
-            else if (answerBox2 != null) {
-                int lengthOfAnswer = answerBox2.Text.Length;
-                answerBox2.Select(0, lengthOfAnswer);
-            }
-        }
-
+        
     }
 }

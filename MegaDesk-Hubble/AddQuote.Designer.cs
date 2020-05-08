@@ -87,6 +87,7 @@ namespace MegaDesk_Hubble
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.errorProvider3 = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.DrawerBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).BeginInit();
@@ -94,14 +95,14 @@ namespace MegaDesk_Hubble
             this.groupBoxSpec.SuspendLayout();
             this.groupBoxShip.SuspendLayout();
             this.groupBoxQuote.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider3)).BeginInit();
             this.SuspendLayout();
             // 
             // mainMenu
             // 
-            this.mainMenu.Location = new System.Drawing.Point(21, 463);
-            this.mainMenu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.mainMenu.Location = new System.Drawing.Point(16, 394);
             this.mainMenu.Name = "mainMenu";
-            this.mainMenu.Size = new System.Drawing.Size(100, 28);
+            this.mainMenu.Size = new System.Drawing.Size(75, 23);
             this.mainMenu.TabIndex = 8;
             this.mainMenu.Text = "&Main Menu";
             this.mainMenu.UseVisualStyleBackColor = true;
@@ -110,10 +111,9 @@ namespace MegaDesk_Hubble
             // 
             // exit
             // 
-            this.exit.Location = new System.Drawing.Point(237, 463);
-            this.exit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.exit.Location = new System.Drawing.Point(178, 394);
             this.exit.Name = "exit";
-            this.exit.Size = new System.Drawing.Size(100, 28);
+            this.exit.Size = new System.Drawing.Size(75, 23);
             this.exit.TabIndex = 9;
             this.exit.Text = "E&xit";
             this.exit.UseVisualStyleBackColor = true;
@@ -123,22 +123,22 @@ namespace MegaDesk_Hubble
             // NameBox
             // 
             this.NameBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NameBox.Location = new System.Drawing.Point(189, 11);
-            this.NameBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.NameBox.Location = new System.Drawing.Point(142, 9);
             this.NameBox.Name = "NameBox";
-            this.NameBox.Size = new System.Drawing.Size(187, 26);
+            this.NameBox.Size = new System.Drawing.Size(141, 23);
             this.NameBox.TabIndex = 0;
-            this.NameBox.Enter += new System.EventHandler(this.tabInEvent_Enter);
+            this.NameBox.TextChanged += new System.EventHandler(this.NameBox_TextChanged);
             this.NameBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.NameBox_KeyPress);
+            this.NameBox.Validating += new System.ComponentModel.CancelEventHandler(this.NameBox_Validating);
+            this.NameBox.Validated += new System.EventHandler(this.NameBox_Validated);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(16, 11);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(154, 25);
+            this.label1.Size = new System.Drawing.Size(124, 20);
             this.label1.TabIndex = 3;
             this.label1.Text = "Customer Name";
             // 
@@ -146,10 +146,9 @@ namespace MegaDesk_Hubble
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(39, 32);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(29, 26);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(113, 25);
+            this.label2.Size = new System.Drawing.Size(91, 20);
             this.label2.TabIndex = 5;
             this.label2.Text = "Desk Width";
             // 
@@ -157,10 +156,9 @@ namespace MegaDesk_Hubble
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(39, 71);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(29, 58);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(114, 25);
+            this.label3.Size = new System.Drawing.Size(94, 20);
             this.label3.TabIndex = 7;
             this.label3.Text = "Desk Depth";
             // 
@@ -168,10 +166,9 @@ namespace MegaDesk_Hubble
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(39, 42);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(29, 34);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(78, 25);
+            this.label4.Size = new System.Drawing.Size(63, 20);
             this.label4.TabIndex = 13;
             this.label4.Text = "Method";
             // 
@@ -179,10 +176,9 @@ namespace MegaDesk_Hubble
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(39, 79);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Location = new System.Drawing.Point(29, 64);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(81, 25);
+            this.label5.Size = new System.Drawing.Size(65, 20);
             this.label5.TabIndex = 11;
             this.label5.Text = "Material";
             // 
@@ -190,19 +186,17 @@ namespace MegaDesk_Hubble
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(39, 31);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Location = new System.Drawing.Point(29, 25);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(84, 25);
+            this.label6.Size = new System.Drawing.Size(68, 20);
             this.label6.TabIndex = 9;
             this.label6.Text = "Drawers";
             // 
             // SubmitButton
             // 
-            this.SubmitButton.Location = new System.Drawing.Point(129, 463);
-            this.SubmitButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.SubmitButton.Location = new System.Drawing.Point(97, 394);
             this.SubmitButton.Name = "SubmitButton";
-            this.SubmitButton.Size = new System.Drawing.Size(100, 28);
+            this.SubmitButton.Size = new System.Drawing.Size(75, 23);
             this.SubmitButton.TabIndex = 7;
             this.SubmitButton.Text = "&Submit";
             this.SubmitButton.UseVisualStyleBackColor = true;
@@ -222,10 +216,9 @@ namespace MegaDesk_Hubble
             "Pine",
             "Rosewood",
             "Veneer"});
-            this.MaterialBox.Location = new System.Drawing.Point(133, 74);
-            this.MaterialBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.MaterialBox.Location = new System.Drawing.Point(100, 60);
             this.MaterialBox.Name = "MaterialBox";
-            this.MaterialBox.Size = new System.Drawing.Size(132, 28);
+            this.MaterialBox.Size = new System.Drawing.Size(100, 24);
             this.MaterialBox.TabIndex = 4;
             this.MaterialBox.SelectedIndexChanged += new System.EventHandler(this.MaterialBox_SelectedIndexChanged);
             // 
@@ -241,37 +234,34 @@ namespace MegaDesk_Hubble
             "5 Days",
             "7 Days",
             "Normal - 14 Days"});
-            this.RushBox.Location = new System.Drawing.Point(131, 37);
-            this.RushBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.RushBox.Location = new System.Drawing.Point(98, 30);
             this.RushBox.Name = "RushBox";
-            this.RushBox.Size = new System.Drawing.Size(171, 28);
+            this.RushBox.Size = new System.Drawing.Size(129, 24);
             this.RushBox.TabIndex = 5;
             this.RushBox.SelectedIndexChanged += new System.EventHandler(this.RushBox_SelectedIndexChanged);
             // 
             // DrawerBox
             // 
             this.DrawerBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DrawerBox.Location = new System.Drawing.Point(137, 31);
-            this.DrawerBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.DrawerBox.Location = new System.Drawing.Point(103, 25);
             this.DrawerBox.Maximum = new decimal(new int[] {
             7,
             0,
             0,
             0});
             this.DrawerBox.Name = "DrawerBox";
-            this.DrawerBox.Size = new System.Drawing.Size(68, 26);
+            this.DrawerBox.Size = new System.Drawing.Size(51, 23);
             this.DrawerBox.TabIndex = 3;
             this.DrawerBox.ValueChanged += new System.EventHandler(this.DrawerBox_ValueChanged);
-            this.DrawerBox.Enter += new System.EventHandler(this.tabInEvent_Enter);
+            this.DrawerBox.Enter += new System.EventHandler(this.TabInEvent_Enter);
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(245, 30);
-            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Location = new System.Drawing.Point(184, 24);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(51, 18);
+            this.label8.Size = new System.Drawing.Size(43, 15);
             this.label8.TabIndex = 17;
             this.label8.Text = "Inches";
             // 
@@ -279,10 +269,9 @@ namespace MegaDesk_Hubble
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(245, 75);
-            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label9.Location = new System.Drawing.Point(184, 61);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(51, 18);
+            this.label9.Size = new System.Drawing.Size(43, 15);
             this.label9.TabIndex = 18;
             this.label9.Text = "Inches";
             // 
@@ -290,14 +279,13 @@ namespace MegaDesk_Hubble
             // 
             this.WidthBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.errorProvider1.SetIconPadding(this.WidthBox, -65);
-            this.WidthBox.Location = new System.Drawing.Point(172, 26);
-            this.WidthBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.WidthBox.Location = new System.Drawing.Point(129, 21);
             this.WidthBox.Name = "WidthBox";
-            this.WidthBox.Size = new System.Drawing.Size(64, 26);
+            this.WidthBox.Size = new System.Drawing.Size(49, 23);
             this.WidthBox.TabIndex = 1;
             this.WidthBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.WidthBox.TextChanged += new System.EventHandler(this.WidthBox_TextChanged);
-            this.WidthBox.Enter += new System.EventHandler(this.tabInEvent_Enter);
+            this.WidthBox.Enter += new System.EventHandler(this.TabInEvent_Enter);
             this.WidthBox.Validating += new System.ComponentModel.CancelEventHandler(this.WidthBox_Validating);
             this.WidthBox.Validated += new System.EventHandler(this.WidthBox_Validated);
             // 
@@ -305,14 +293,13 @@ namespace MegaDesk_Hubble
             // 
             this.DepthBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.errorProvider2.SetIconPadding(this.DepthBox, -65);
-            this.DepthBox.Location = new System.Drawing.Point(172, 71);
-            this.DepthBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.DepthBox.Location = new System.Drawing.Point(129, 58);
             this.DepthBox.Name = "DepthBox";
-            this.DepthBox.Size = new System.Drawing.Size(64, 26);
+            this.DepthBox.Size = new System.Drawing.Size(49, 23);
             this.DepthBox.TabIndex = 2;
             this.DepthBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.DepthBox.TextChanged += new System.EventHandler(this.DepthBox_TextChanged);
-            this.DepthBox.Enter += new System.EventHandler(this.tabInEvent_Enter);
+            this.DepthBox.Enter += new System.EventHandler(this.TabInEvent_Enter);
             this.DepthBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.DepthBox_KeyPress);
             this.DepthBox.Validating += new System.ComponentModel.CancelEventHandler(this.DepthBox_Validating);
             this.DepthBox.Validated += new System.EventHandler(this.DepthBox_Validated);
@@ -329,10 +316,9 @@ namespace MegaDesk_Hubble
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(39, 108);
-            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label10.Location = new System.Drawing.Point(29, 88);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(51, 25);
+            this.label10.Size = new System.Drawing.Size(40, 20);
             this.label10.TabIndex = 21;
             this.label10.Text = "Size";
             // 
@@ -340,10 +326,9 @@ namespace MegaDesk_Hubble
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(244, 112);
-            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label11.Location = new System.Drawing.Point(183, 91);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(56, 18);
+            this.label11.Size = new System.Drawing.Size(47, 15);
             this.label11.TabIndex = 22;
             this.label11.Text = "Inches²";
             // 
@@ -358,11 +343,9 @@ namespace MegaDesk_Hubble
             this.groupBoxSize.Controls.Add(this.DepthBox);
             this.groupBoxSize.Controls.Add(this.label8);
             this.groupBoxSize.Controls.Add(this.label9);
-            this.groupBoxSize.Location = new System.Drawing.Point(21, 48);
-            this.groupBoxSize.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBoxSize.Location = new System.Drawing.Point(16, 39);
             this.groupBoxSize.Name = "groupBoxSize";
-            this.groupBoxSize.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.groupBoxSize.Size = new System.Drawing.Size(356, 150);
+            this.groupBoxSize.Size = new System.Drawing.Size(267, 122);
             this.groupBoxSize.TabIndex = 1;
             this.groupBoxSize.TabStop = false;
             this.groupBoxSize.Text = "Size";
@@ -370,10 +353,9 @@ namespace MegaDesk_Hubble
             // SquareInLabel
             // 
             this.SquareInLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SquareInLabel.Location = new System.Drawing.Point(172, 108);
-            this.SquareInLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.SquareInLabel.Location = new System.Drawing.Point(129, 88);
             this.SquareInLabel.Name = "SquareInLabel";
-            this.SquareInLabel.Size = new System.Drawing.Size(65, 28);
+            this.SquareInLabel.Size = new System.Drawing.Size(49, 23);
             this.SquareInLabel.TabIndex = 23;
             this.SquareInLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -383,11 +365,9 @@ namespace MegaDesk_Hubble
             this.groupBoxSpec.Controls.Add(this.DrawerBox);
             this.groupBoxSpec.Controls.Add(this.label5);
             this.groupBoxSpec.Controls.Add(this.MaterialBox);
-            this.groupBoxSpec.Location = new System.Drawing.Point(21, 217);
-            this.groupBoxSpec.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBoxSpec.Location = new System.Drawing.Point(16, 176);
             this.groupBoxSpec.Name = "groupBoxSpec";
-            this.groupBoxSpec.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.groupBoxSpec.Size = new System.Drawing.Size(356, 132);
+            this.groupBoxSpec.Size = new System.Drawing.Size(267, 107);
             this.groupBoxSpec.TabIndex = 2;
             this.groupBoxSpec.TabStop = false;
             this.groupBoxSpec.Text = "Specifications";
@@ -396,11 +376,9 @@ namespace MegaDesk_Hubble
             // 
             this.groupBoxShip.Controls.Add(this.label4);
             this.groupBoxShip.Controls.Add(this.RushBox);
-            this.groupBoxShip.Location = new System.Drawing.Point(21, 370);
-            this.groupBoxShip.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBoxShip.Location = new System.Drawing.Point(16, 301);
             this.groupBoxShip.Name = "groupBoxShip";
-            this.groupBoxShip.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.groupBoxShip.Size = new System.Drawing.Size(356, 85);
+            this.groupBoxShip.Size = new System.Drawing.Size(267, 69);
             this.groupBoxShip.TabIndex = 3;
             this.groupBoxShip.TabStop = false;
             this.groupBoxShip.Text = "Shipping";
@@ -437,11 +415,9 @@ namespace MegaDesk_Hubble
             this.groupBoxQuote.Controls.Add(this.label13);
             this.groupBoxQuote.Controls.Add(this.label12);
             this.groupBoxQuote.Controls.Add(this.label7);
-            this.groupBoxQuote.Location = new System.Drawing.Point(403, 11);
-            this.groupBoxQuote.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBoxQuote.Location = new System.Drawing.Point(302, 9);
             this.groupBoxQuote.Name = "groupBoxQuote";
-            this.groupBoxQuote.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.groupBoxQuote.Size = new System.Drawing.Size(352, 480);
+            this.groupBoxQuote.Size = new System.Drawing.Size(264, 408);
             this.groupBoxQuote.TabIndex = 26;
             this.groupBoxQuote.TabStop = false;
             this.groupBoxQuote.Text = "Quote";
@@ -449,20 +425,18 @@ namespace MegaDesk_Hubble
             // QuoteDateLabel
             // 
             this.QuoteDateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.QuoteDateLabel.Location = new System.Drawing.Point(212, 14);
-            this.QuoteDateLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.QuoteDateLabel.Location = new System.Drawing.Point(140, 16);
             this.QuoteDateLabel.Name = "QuoteDateLabel";
-            this.QuoteDateLabel.Size = new System.Drawing.Size(123, 42);
+            this.QuoteDateLabel.Size = new System.Drawing.Size(118, 34);
             this.QuoteDateLabel.TabIndex = 31;
             this.QuoteDateLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label22
             // 
             this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.Location = new System.Drawing.Point(89, 14);
-            this.label22.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label22.Location = new System.Drawing.Point(48, 16);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(111, 42);
+            this.label22.Size = new System.Drawing.Size(83, 34);
             this.label22.TabIndex = 30;
             this.label22.Text = "Quote Date";
             this.label22.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -470,20 +444,18 @@ namespace MegaDesk_Hubble
             // TotalCostLabel
             // 
             this.TotalCostLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TotalCostLabel.Location = new System.Drawing.Point(251, 432);
-            this.TotalCostLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.TotalCostLabel.Location = new System.Drawing.Point(169, 356);
             this.TotalCostLabel.Name = "TotalCostLabel";
-            this.TotalCostLabel.Size = new System.Drawing.Size(84, 42);
+            this.TotalCostLabel.Size = new System.Drawing.Size(89, 34);
             this.TotalCostLabel.TabIndex = 29;
             this.TotalCostLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // ShipCostLabel
             // 
             this.ShipCostLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ShipCostLabel.Location = new System.Drawing.Point(251, 390);
-            this.ShipCostLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.ShipCostLabel.Location = new System.Drawing.Point(169, 322);
             this.ShipCostLabel.Name = "ShipCostLabel";
-            this.ShipCostLabel.Size = new System.Drawing.Size(84, 42);
+            this.ShipCostLabel.Size = new System.Drawing.Size(63, 34);
             this.ShipCostLabel.TabIndex = 28;
             this.ShipCostLabel.Text = "0.00";
             this.ShipCostLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -491,10 +463,9 @@ namespace MegaDesk_Hubble
             // MaterialCostLabel
             // 
             this.MaterialCostLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MaterialCostLabel.Location = new System.Drawing.Point(251, 348);
-            this.MaterialCostLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.MaterialCostLabel.Location = new System.Drawing.Point(169, 288);
             this.MaterialCostLabel.Name = "MaterialCostLabel";
-            this.MaterialCostLabel.Size = new System.Drawing.Size(84, 42);
+            this.MaterialCostLabel.Size = new System.Drawing.Size(63, 34);
             this.MaterialCostLabel.TabIndex = 27;
             this.MaterialCostLabel.Text = "0.00";
             this.MaterialCostLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -502,10 +473,9 @@ namespace MegaDesk_Hubble
             // DrawerCostLabel
             // 
             this.DrawerCostLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DrawerCostLabel.Location = new System.Drawing.Point(251, 306);
-            this.DrawerCostLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.DrawerCostLabel.Location = new System.Drawing.Point(169, 254);
             this.DrawerCostLabel.Name = "DrawerCostLabel";
-            this.DrawerCostLabel.Size = new System.Drawing.Size(84, 42);
+            this.DrawerCostLabel.Size = new System.Drawing.Size(63, 34);
             this.DrawerCostLabel.TabIndex = 26;
             this.DrawerCostLabel.Text = "0.00";
             this.DrawerCostLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -513,10 +483,9 @@ namespace MegaDesk_Hubble
             // label36
             // 
             this.label36.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label36.Location = new System.Drawing.Point(251, 265);
-            this.label36.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label36.Location = new System.Drawing.Point(169, 220);
             this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(84, 42);
+            this.label36.Size = new System.Drawing.Size(63, 34);
             this.label36.TabIndex = 25;
             this.label36.Text = "50.00";
             this.label36.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -524,10 +493,9 @@ namespace MegaDesk_Hubble
             // SizeCostLabel
             // 
             this.SizeCostLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SizeCostLabel.Location = new System.Drawing.Point(251, 223);
-            this.SizeCostLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.SizeCostLabel.Location = new System.Drawing.Point(169, 186);
             this.SizeCostLabel.Name = "SizeCostLabel";
-            this.SizeCostLabel.Size = new System.Drawing.Size(84, 42);
+            this.SizeCostLabel.Size = new System.Drawing.Size(89, 34);
             this.SizeCostLabel.TabIndex = 24;
             this.SizeCostLabel.Text = "0.00";
             this.SizeCostLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -535,20 +503,18 @@ namespace MegaDesk_Hubble
             // SizeOverageLabel
             // 
             this.SizeOverageLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SizeOverageLabel.Location = new System.Drawing.Point(251, 181);
-            this.SizeOverageLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.SizeOverageLabel.Location = new System.Drawing.Point(169, 152);
             this.SizeOverageLabel.Name = "SizeOverageLabel";
-            this.SizeOverageLabel.Size = new System.Drawing.Size(84, 42);
+            this.SizeOverageLabel.Size = new System.Drawing.Size(89, 34);
             this.SizeOverageLabel.TabIndex = 23;
             this.SizeOverageLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label33
             // 
             this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label33.Location = new System.Drawing.Point(251, 139);
-            this.label33.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label33.Location = new System.Drawing.Point(169, 118);
             this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(84, 42);
+            this.label33.Size = new System.Drawing.Size(63, 34);
             this.label33.TabIndex = 22;
             this.label33.Text = "1.00";
             this.label33.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -556,10 +522,9 @@ namespace MegaDesk_Hubble
             // label32
             // 
             this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label32.Location = new System.Drawing.Point(251, 97);
-            this.label32.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label32.Location = new System.Drawing.Point(169, 84);
             this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(84, 42);
+            this.label32.Size = new System.Drawing.Size(63, 34);
             this.label32.TabIndex = 21;
             this.label32.Text = "1,000";
             this.label32.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -567,10 +532,9 @@ namespace MegaDesk_Hubble
             // label31
             // 
             this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label31.Location = new System.Drawing.Point(251, 55);
-            this.label31.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label31.Location = new System.Drawing.Point(169, 50);
             this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(84, 42);
+            this.label31.Size = new System.Drawing.Size(63, 34);
             this.label31.TabIndex = 20;
             this.label31.Text = "200.00";
             this.label31.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -578,10 +542,9 @@ namespace MegaDesk_Hubble
             // label27
             // 
             this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label27.Location = new System.Drawing.Point(208, 432);
-            this.label27.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label27.Location = new System.Drawing.Point(137, 356);
             this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(35, 42);
+            this.label27.Size = new System.Drawing.Size(26, 34);
             this.label27.TabIndex = 19;
             this.label27.Text = "$";
             this.label27.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -589,10 +552,9 @@ namespace MegaDesk_Hubble
             // label28
             // 
             this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label28.Location = new System.Drawing.Point(208, 390);
-            this.label28.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label28.Location = new System.Drawing.Point(137, 322);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(35, 42);
+            this.label28.Size = new System.Drawing.Size(26, 34);
             this.label28.TabIndex = 18;
             this.label28.Text = "$";
             this.label28.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -600,10 +562,9 @@ namespace MegaDesk_Hubble
             // label29
             // 
             this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label29.Location = new System.Drawing.Point(208, 348);
-            this.label29.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label29.Location = new System.Drawing.Point(137, 288);
             this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(35, 42);
+            this.label29.Size = new System.Drawing.Size(26, 34);
             this.label29.TabIndex = 17;
             this.label29.Text = "$";
             this.label29.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -611,10 +572,9 @@ namespace MegaDesk_Hubble
             // label30
             // 
             this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label30.Location = new System.Drawing.Point(208, 306);
-            this.label30.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label30.Location = new System.Drawing.Point(137, 254);
             this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(35, 42);
+            this.label30.Size = new System.Drawing.Size(26, 34);
             this.label30.TabIndex = 16;
             this.label30.Text = "$";
             this.label30.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -622,10 +582,9 @@ namespace MegaDesk_Hubble
             // label24
             // 
             this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.Location = new System.Drawing.Point(208, 265);
-            this.label24.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label24.Location = new System.Drawing.Point(137, 220);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(35, 42);
+            this.label24.Size = new System.Drawing.Size(26, 34);
             this.label24.TabIndex = 15;
             this.label24.Text = "$";
             this.label24.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -633,10 +592,9 @@ namespace MegaDesk_Hubble
             // label25
             // 
             this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.Location = new System.Drawing.Point(208, 223);
-            this.label25.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label25.Location = new System.Drawing.Point(137, 186);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(35, 42);
+            this.label25.Size = new System.Drawing.Size(26, 34);
             this.label25.TabIndex = 14;
             this.label25.Text = "$";
             this.label25.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -644,10 +602,9 @@ namespace MegaDesk_Hubble
             // label23
             // 
             this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.Location = new System.Drawing.Point(208, 139);
-            this.label23.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label23.Location = new System.Drawing.Point(137, 118);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(35, 42);
+            this.label23.Size = new System.Drawing.Size(26, 34);
             this.label23.TabIndex = 12;
             this.label23.Text = "$";
             this.label23.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -655,10 +612,9 @@ namespace MegaDesk_Hubble
             // label17
             // 
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(208, 55);
-            this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label17.Location = new System.Drawing.Point(137, 50);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(35, 42);
+            this.label17.Size = new System.Drawing.Size(26, 34);
             this.label17.TabIndex = 10;
             this.label17.Text = "$";
             this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -666,10 +622,9 @@ namespace MegaDesk_Hubble
             // label18
             // 
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(96, 432);
-            this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label18.Location = new System.Drawing.Point(53, 356);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(104, 42);
+            this.label18.Size = new System.Drawing.Size(78, 34);
             this.label18.TabIndex = 9;
             this.label18.Text = "Total Cost";
             this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -677,10 +632,9 @@ namespace MegaDesk_Hubble
             // label19
             // 
             this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(63, 390);
-            this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label19.Location = new System.Drawing.Point(28, 322);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(137, 42);
+            this.label19.Size = new System.Drawing.Size(103, 34);
             this.label19.TabIndex = 8;
             this.label19.Text = "Shipping Cost";
             this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -688,10 +642,9 @@ namespace MegaDesk_Hubble
             // label20
             // 
             this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(72, 348);
-            this.label20.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label20.Location = new System.Drawing.Point(35, 288);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(128, 42);
+            this.label20.Size = new System.Drawing.Size(96, 34);
             this.label20.TabIndex = 7;
             this.label20.Text = "Material Cost";
             this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -699,10 +652,9 @@ namespace MegaDesk_Hubble
             // label21
             // 
             this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(72, 306);
-            this.label21.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label21.Location = new System.Drawing.Point(35, 254);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(128, 42);
+            this.label21.Size = new System.Drawing.Size(96, 34);
             this.label21.TabIndex = 6;
             this.label21.Text = "Drawer Cost";
             this.label21.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -710,10 +662,9 @@ namespace MegaDesk_Hubble
             // label14
             // 
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(44, 265);
-            this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label14.Location = new System.Drawing.Point(14, 220);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(156, 42);
+            this.label14.Size = new System.Drawing.Size(117, 34);
             this.label14.TabIndex = 5;
             this.label14.Text = "Price per Drawer";
             this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -721,10 +672,9 @@ namespace MegaDesk_Hubble
             // label15
             // 
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(108, 223);
-            this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label15.Location = new System.Drawing.Point(62, 186);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(92, 42);
+            this.label15.Size = new System.Drawing.Size(69, 34);
             this.label15.TabIndex = 4;
             this.label15.Text = "Size Cost";
             this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -732,10 +682,9 @@ namespace MegaDesk_Hubble
             // label16
             // 
             this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(72, 181);
-            this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label16.Location = new System.Drawing.Point(35, 152);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(128, 42);
+            this.label16.Size = new System.Drawing.Size(96, 34);
             this.label16.TabIndex = 3;
             this.label16.Text = "Size Overage";
             this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -743,10 +692,9 @@ namespace MegaDesk_Hubble
             // label13
             // 
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(72, 139);
-            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label13.Location = new System.Drawing.Point(35, 118);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(128, 42);
+            this.label13.Size = new System.Drawing.Size(96, 34);
             this.label13.TabIndex = 2;
             this.label13.Text = "Cost per in²";
             this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -754,10 +702,9 @@ namespace MegaDesk_Hubble
             // label12
             // 
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(63, 97);
-            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label12.Location = new System.Drawing.Point(28, 84);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(137, 42);
+            this.label12.Size = new System.Drawing.Size(103, 34);
             this.label12.TabIndex = 1;
             this.label12.Text = "Base Size incl.";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -765,19 +712,22 @@ namespace MegaDesk_Hubble
             // label7
             // 
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(96, 55);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Location = new System.Drawing.Point(53, 50);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(104, 42);
+            this.label7.Size = new System.Drawing.Size(78, 34);
             this.label7.TabIndex = 0;
             this.label7.Text = "Base Price";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // errorProvider3
+            // 
+            this.errorProvider3.ContainerControl = this;
+            // 
             // AddQuote
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(771, 500);
+            this.ClientSize = new System.Drawing.Size(578, 429);
             this.Controls.Add(this.groupBoxQuote);
             this.Controls.Add(this.groupBoxShip);
             this.Controls.Add(this.groupBoxSpec);
@@ -787,7 +737,6 @@ namespace MegaDesk_Hubble
             this.Controls.Add(this.NameBox);
             this.Controls.Add(this.exit);
             this.Controls.Add(this.mainMenu);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.Name = "AddQuote";
             this.Text = "AddQuote";
@@ -801,6 +750,7 @@ namespace MegaDesk_Hubble
             this.groupBoxShip.ResumeLayout(false);
             this.groupBoxShip.PerformLayout();
             this.groupBoxQuote.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -864,5 +814,6 @@ namespace MegaDesk_Hubble
         private System.Windows.Forms.Label SquareInLabel;
         private System.Windows.Forms.Label QuoteDateLabel;
         private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.ErrorProvider errorProvider3;
     }
 }
