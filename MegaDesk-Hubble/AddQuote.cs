@@ -16,6 +16,9 @@ namespace MegaDesk_Hubble
         public AddQuote() {
             InitializeComponent();
 
+            //Bind ComboBox with Enum
+            MaterialBox.DataSource = System.Enum.GetValues(typeof(Enum.DesktopMaterial));
+
             //Populate Date
             QuoteDateLabel.Text = DateTime.Now.ToString("MM/dd/yyyy");
             dq.setQuoteDate(QuoteDateLabel.Text);

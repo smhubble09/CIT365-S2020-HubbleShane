@@ -42,6 +42,7 @@ namespace MegaDesk_Hubble
             this.label6 = new System.Windows.Forms.Label();
             this.SubmitButton = new System.Windows.Forms.Button();
             this.MaterialBox = new System.Windows.Forms.ComboBox();
+            this.deskBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.RushBox = new System.Windows.Forms.ComboBox();
             this.DrawerBox = new System.Windows.Forms.NumericUpDown();
             this.label8 = new System.Windows.Forms.Label();
@@ -88,6 +89,7 @@ namespace MegaDesk_Hubble
             this.label12 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.errorProvider3 = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.deskBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DrawerBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).BeginInit();
@@ -207,20 +209,19 @@ namespace MegaDesk_Hubble
             // 
             this.MaterialBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
             this.MaterialBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.MaterialBox.DataSource = this.deskBindingSource;
             this.MaterialBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.MaterialBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MaterialBox.FormattingEnabled = true;
-            this.MaterialBox.Items.AddRange(new object[] {
-            "Oak",
-            "Laminate",
-            "Pine",
-            "Rosewood",
-            "Veneer"});
             this.MaterialBox.Location = new System.Drawing.Point(100, 60);
             this.MaterialBox.Name = "MaterialBox";
             this.MaterialBox.Size = new System.Drawing.Size(100, 24);
             this.MaterialBox.TabIndex = 4;
             this.MaterialBox.SelectedIndexChanged += new System.EventHandler(this.MaterialBox_SelectedIndexChanged);
+            // 
+            // deskBindingSource
+            // 
+            this.deskBindingSource.DataSource = typeof(MegaDesk_Hubble.Desk);
             // 
             // RushBox
             // 
@@ -740,6 +741,7 @@ namespace MegaDesk_Hubble
             this.MaximizeBox = false;
             this.Name = "AddQuote";
             this.Text = "AddQuote";
+            ((System.ComponentModel.ISupportInitialize)(this.deskBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DrawerBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).EndInit();
@@ -815,5 +817,6 @@ namespace MegaDesk_Hubble
         private System.Windows.Forms.Label QuoteDateLabel;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.ErrorProvider errorProvider3;
+        private System.Windows.Forms.BindingSource deskBindingSource;
     }
 }
