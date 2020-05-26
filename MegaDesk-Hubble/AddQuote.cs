@@ -37,6 +37,7 @@ namespace MegaDesk_Hubble
         }
         //Submit
         private void SubmitButton_Click(object sender, EventArgs e) {
+
             Close();
             form.Show();
         }

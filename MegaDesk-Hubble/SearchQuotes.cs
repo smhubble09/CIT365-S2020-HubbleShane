@@ -15,6 +15,9 @@ namespace MegaDesk_Hubble
         public SearchQuotes()
         {
             InitializeComponent();
+            //Bind ComboBox with Enum
+            MaterialSearchBox.DataSource = System.Enum.GetValues(typeof(Enum.DesktopMaterial));
+
         }
         //Main Menu
         private void MainMenu_Click(object sender, EventArgs e) {

@@ -1,6 +1,7 @@
 ﻿using Microsoft.SqlServer.Server;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -19,6 +20,7 @@ namespace MegaDesk_Hubble
         private int shippingPrice;
         private int drawerPrice;
         private int extraSizePrice;
+        
 
         //Get/Set Customer Name
         public string getCustName() {
