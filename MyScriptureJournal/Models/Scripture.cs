@@ -14,10 +14,12 @@ namespace MyScriptureJournal.Models {
 
         //----------------------------------
         [Required]
+        [Range(1,70)]
         public int Chapter { get; set; }
 
         //----------------------------------
         [Required]
+        [Range(1, 90)]
         public string Verse { get; set; }
 
         //----------------------------------

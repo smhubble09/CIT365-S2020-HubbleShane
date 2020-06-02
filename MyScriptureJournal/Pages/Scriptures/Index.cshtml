@@ -3,6 +3,7 @@
 
 @{
     ViewData["Title"] = "Index";
+    Layout = "_Layout";
 }
 
 <h1>Index</h1>
@@ -25,8 +26,8 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Scripture[0].Book)
-            </th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.BookSort">@Html.DisplayNameFor(model => model.Scripture[0].Book)</a>
+</th>
             <th>
                 @Html.DisplayNameFor(model => model.Scripture[0].Chapter)
             </th>
@@ -37,8 +38,8 @@
                 @Html.DisplayNameFor(model => model.Scripture[0].Notes)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Scripture[0].TodayDate)
-            </th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.DateSort">@Html.DisplayNameFor(model => model.Scripture[0].TodayDate)</a>
+</th>
             <th></th>
         </tr>
     </thead>
