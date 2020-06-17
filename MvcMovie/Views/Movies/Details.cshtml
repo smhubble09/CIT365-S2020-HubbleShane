@@ -9,7 +9,7 @@
 <div>
     <h4>Movie</h4>
     <hr />
-    <dl class="row">
+    <dl class="row" width="500px">
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Title)
         </dt>
@@ -42,6 +42,7 @@
         </dd>
     </dl>
 </div>
+<div class="gallery" id="gallery"><img alt="" src="~/images/@Html.DisplayFor(model => model.Image)" height="400px" width="300px"/></div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
     <a asp-action="Index">Back to List</a>

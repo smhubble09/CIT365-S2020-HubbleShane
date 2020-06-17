@@ -20,5 +20,7 @@ namespace MvcMovie.Models {
 
         [Required]
         public string Rating { get; set; }
+
+        public string Image { get; set; }
     }
 }
