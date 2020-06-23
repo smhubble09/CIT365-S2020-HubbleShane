@@ -48,7 +48,7 @@ namespace ContosoUniversity.Controllers {
                 "date_desc" => students.OrderByDescending(s => s.EnrollmentDate),
                 _ => students.OrderBy(s => s.LastName),
             };
-            int pageSize = 3;
+            int pageSize = 10;
             return View(await PaginatedList<Student>.CreateAsync(students.AsNoTracking(), pageNumber ?? 1, pageSize));
         }
 
