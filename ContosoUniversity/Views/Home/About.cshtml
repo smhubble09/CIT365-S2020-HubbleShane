@@ -4,31 +4,24 @@
     ViewData["Title"] = "Student Body Statistics";
 }
 
-<h2>Student Body Statistics</h2>
+<h2 class="head-center">Contact Information</h2>
 
-<table>
+<table class="contact-info">
     <tr>
         <th>
-            Enrollment Date
+            Name:
         </th>
-        <th>
-            Students
-        </th>
+        <td>
+            Shane Hubble
+        </td>
     </tr>
-
-    @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.EnrollmentDate)
-            </td>
-            <td>
-                @item.StudentCount
-            </td>
-        </tr>
-    }
+    <tr>
+        <th>
+            Email:
+        </th>
+        <td>
+            smhubble09@byui.edu
+        </td>
+    </tr>
 </table>
 
-<div class="contact">
-    <p>Shane Hubble</p>
-    <p>smhubble09@byui.edu</p>
-</div>

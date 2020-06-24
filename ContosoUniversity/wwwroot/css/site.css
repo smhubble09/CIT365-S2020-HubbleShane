@@ -108,7 +108,6 @@ a.current {
     text-decoration: underline;
 }
 
-
 .navbar-brand {
     color: gold !important;
 }
@@ -117,3 +116,12 @@ a.current {
     color: grey !important;
 }
 
+.contact-info {
+    font-family: 'El Messiri', sans-serif;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.head-center {
+    text-align: center;
+}
