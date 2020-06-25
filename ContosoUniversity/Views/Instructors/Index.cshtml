@@ -49,10 +49,10 @@
                     }
                 </td>
                 <td>
-                    <a asp-action="Index" asp-route-id="@item.ID">Select</a> |
-                    <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                    <a asp-action="Index" class="btn btn-outline-primary" asp-route-id="@item.ID">Select</a> |
+                    <a asp-action="Edit" class="btn-outline-warning btn" asp-route-id="@item.ID">Edit</a> |
+                    <a asp-action="Details" class="btn-outline-info btn" asp-route-id="@item.ID">Details</a> |
+                    <a asp-action="Delete" class="btn-outline-danger btn" asp-route-id="@item.ID">Delete</a>
                 </td>
             </tr>
         }

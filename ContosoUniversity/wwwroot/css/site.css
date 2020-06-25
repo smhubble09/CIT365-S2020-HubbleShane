@@ -125,3 +125,13 @@ a.current {
 .head-center {
     text-align: center;
 }
+
+.success {
+    background-color: lightcyan;
+}
+
+.logo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
