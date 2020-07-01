@@ -4,26 +4,27 @@
     ViewData["Title"] = "Student Body Statistics";
 }
 
-<h2>Student Body Statistics</h2>
+<h2 class="head-center">Contact Information</h2>
 
-<table>
+<p class="head-center font-italic" style="font-size:18px">For any technical issues or questions, please use the provided information below.</p>
+<table class="contact-info">
     <tr>
         <th>
-            Enrollment Date
+            Name:
         </th>
-        <th>
-            Students
-        </th>
+        <td>
+            Shane Hubble
+        </td>
     </tr>
-
-    @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.EnrollmentDate)
-            </td>
-            <td>
-                @item.StudentCount
-            </td>
-        </tr>
-    }
+    <tr>
+        <th>
+            Email:
+        </th>
+        <td>
+            smhubble09@byui.edu
+        </td>
+    </tr>
 </table>
+
+<img class="logo" src="~/images/logo.jpg"/>
+
