@@ -32,13 +32,11 @@ namespace BooksAPI {
 
             services.AddSingleton<BookService>();
 
-            // services.AddMvc()
             services.AddControllersWithViews().
         AddJsonOptions(options => {
             options.JsonSerializerOptions.PropertyNameCaseInsensitive = true;
             options.JsonSerializerOptions.PropertyNamingPolicy = null;
         });
-            //services.AddControllers();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

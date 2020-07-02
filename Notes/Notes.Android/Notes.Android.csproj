@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{BB9E9AC8-AB79-4371-A242-8EE3CA422D5D}</ProjectGuid>
+    <ProjectGuid>{D0A88DD2-AD12-47E6-8043-BED18C89A2E4}</ProjectGuid>
     <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TemplateGuid>{c9e5eea5-ca05-42a1-839b-61506e0a37df}</TemplateGuid>
     <OutputType>Library</OutputType>
@@ -90,7 +90,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Notes\Notes.csproj">
-      <Project>{97E36F46-F052-41DC-8EEA-3EE44811C2AC}</Project>
+      <Project>{5FBBF7A7-EE18-46F8-BC3B-4335483BB567}</Project>
       <Name>Notes</Name>
     </ProjectReference>
   </ItemGroup>
